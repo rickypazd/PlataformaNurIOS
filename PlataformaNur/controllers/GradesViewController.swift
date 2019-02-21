@@ -77,12 +77,12 @@ class GradesViewController: UIViewController {
                     self.careerPickerView.reloadAllComponents()
                     
                     if self.careersList.count == 1 {
-                        self.careerPickerView.isHidden = true
+                        self.careerPickerView.isHidden = false
                     }
                     
                     // getting the subjects of the first career
                     let career = self.careersList[0]
-                    self.getSubjects(careerId: career["LCARRERA_ID"].int!, semesterId: 129) //career["LPERIODOACTUAL_ID"].int!)
+                    self.getSubjects(careerId: career["LCARRERA_ID"].int!, semesterId: career["LPERIODOACTUAL_ID"].int!) //)
                 }
                 
                 break
@@ -178,6 +178,7 @@ class GradesViewController: UIViewController {
                 if respuesta["Status"].boolValue {
                     self.subjectsList = respuesta["Data"].array!
                     self.subjectsTableView.reloadData()
+                    
                 }
                 
                 break
